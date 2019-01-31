@@ -1,0 +1,16 @@
+---
+- name: unattended security updates ubuntu_user
+  hosts: all
+  #become: yes
+  #become_method: sudo
+  tasks: # tasks are done in order
+      # do an "apt-get update", to ensure latest package lists
+    - name: apt-get update
+      apt:
+        update-cache: yes
+
+    - name: install unattended
+      apt: name=unattended-upgrades state=latest
+
+    - name: replace 20auto-upgrades configuration file
+      copy: src=20auto-upgrades dest=/etc/ssmtp/ssmtp.conf
