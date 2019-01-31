@@ -5,11 +5,11 @@
   become_method: sudo
   tasks: # tasks are done in order
       # do an "apt-get update", to ensure latest package lists
-    - name: apt-get update
-      command: apt-get update
+    # - name: apt-get update
+    #   command: apt-get update
 
-    - name: install unattended
-      apt: name=unattended-upgrades state=latest
+    # - name: install unattended
+    #   apt: name=unattended-upgrades state=latest
 
     - name: replace 20auto-upgrades configuration file
-      copy: src=20auto-upgrades dest=/etc/ssmtp/ssmtp.conf
+      copy: src=20auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades
